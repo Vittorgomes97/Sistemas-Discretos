@@ -150,8 +150,9 @@ Nesta seção são apresentados os modelos de estados que representam o comporta
 O diagrama da Máquina 1 representa seu ciclo completo de operação. A máquina inicia no estado **idle**, aguardando o comando `start_m1` para iniciar o processamento. Ao receber esse comando, a M1 transita para o estado **processing**, onde executa o processamento da peça por um tempo indeterminado. Ao final, ocorre o evento `finish_m1`, levando a máquina ao estado **done**, que indica que a peça está pronta para ser retirada. A transição `get_m1` só pode ocorrer quando o robô coleta a peça, liberando a máquina para retornar ao estado **idle** e possibilitar um novo ciclo de produção. Esse modelo garante que a máquina não processe uma nova peça enquanto a anterior não for removida.
 
 div align="center"
-img src="https://desblogada.files.wordpress.co..." width="0px" /
+img src="![Image](https://github.com/user-attachments/assets/060ec413-744c-4c02-a377-a1724f3bb42f)" width="700px" /
 /div
+
 ### 6.2 Modelo da Máquina 2 (M2)
 
 O modelo da Máquina 2 segue a mesma lógica funcional da Máquina 1, refletindo que ambas são idênticas em comportamento, porém independentes. A M2 inicia em **idle**, passa para **processing** após o comando `start_m2` e, ao concluir o processamento (`finish_m2`), entra no estado **done**. A peça só pode ser retirada pelo robô através do evento `get_m2`, retornando a máquina ao estado **idle**. Essa modelagem assegura o respeito às restrições físicas e evita retiradas prematuras ou reinício indevido do processamento.
