@@ -149,17 +149,29 @@ Nesta seção são apresentados os modelos de estados que representam o comporta
 
 O diagrama da Máquina 1 representa seu ciclo completo de operação. A máquina inicia no estado **idle**, aguardando o comando `start_m1` para iniciar o processamento. Ao receber esse comando, a M1 transita para o estado **processing**, onde executa o processamento da peça por um tempo indeterminado. Ao final, ocorre o evento `finish_m1`, levando a máquina ao estado **done**, que indica que a peça está pronta para ser retirada. A transição `get_m1` só pode ocorrer quando o robô coleta a peça, liberando a máquina para retornar ao estado **idle** e possibilitar um novo ciclo de produção. Esse modelo garante que a máquina não processe uma nova peça enquanto a anterior não for removida.
 
+div align="center"
+img src="https://desblogada.files.wordpress.co..." width="0px" /
+/div
 ### 6.2 Modelo da Máquina 2 (M2)
 
 O modelo da Máquina 2 segue a mesma lógica funcional da Máquina 1, refletindo que ambas são idênticas em comportamento, porém independentes. A M2 inicia em **idle**, passa para **processing** após o comando `start_m2` e, ao concluir o processamento (`finish_m2`), entra no estado **done**. A peça só pode ser retirada pelo robô através do evento `get_m2`, retornando a máquina ao estado **idle**. Essa modelagem assegura o respeito às restrições físicas e evita retiradas prematuras ou reinício indevido do processamento.
+
+img src="https://desblogada.files.wordpress.co..." width="0px" /
+/div
 
 ### 6.3 Modelo do Buffer de Saída
 
 O diagrama do buffer representa sua capacidade limitada de armazenamento. O estado **B0** indica buffer vazio, enquanto **B1** e **B3** representam níveis crescentes de ocupação. A transição `put_buffer` ocorre quando o robô deposita uma peça, aumentando a ocupação do buffer, desde que exista espaço disponível. A transição `remove_buffer` representa a retirada de uma peça por um agente externo, liberando espaço. Esse modelo impede o transbordamento (overflow), garantindo que o robô não deposite peças quando o buffer estiver cheio.
 
+img src="https://desblogada.files.wordpress.co..." width="0px" /
+/div
+
 ### 6.4 Modelo do Robô Industrial
 
 O robô é modelado como o elemento central de coordenação do sistema. Ele inicia no estado **free**, sem carga, podendo deslocar-se até a Máquina 1 (`go_m1`) ou Máquina 2 (`go_m2`). Ao chegar à máquina correspondente (**At_M1** ou **At_M2**), o robô pode executar `get_m1` ou `get_m2`, desde que a máquina esteja no estado **done**, passando então para o estado **Carrying**, no qual transporta uma peça. A única ação permitida nesse estado é `put_buffer`, que deposita a peça no buffer e retorna o robô ao estado **free**. Esse modelo garante a capacidade unitária do robô e evita conflitos de transporte ou operações inválidas.
+
+img src="https://desblogada.files.wordpress.co..." width="0px" /
+/div
 
 
 
