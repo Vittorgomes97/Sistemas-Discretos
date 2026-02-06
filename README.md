@@ -177,3 +177,20 @@ O robô é modelado como o elemento central de coordenação do sistema. Ele ini
   <img src="https://github.com/user-attachments/assets/418b422e-9595-4214-82c1-b733c25cf0d7" width="300px" />
 </div>
 
+## 7. Vídeo Demonstrativo do Funcionamento
+
+Com o objetivo de complementar a descrição teórica e a modelagem apresentada ao longo do projeto, foi desenvolvido um **vídeo demonstrativo** que ilustra o funcionamento da célula de manufatura automatizada em operação.
+
+🔗 **Acesse o vídeo demonstrativo:**  
+[Inserir link do vídeo aqui]
+
+
+## 8. Conclusão
+
+Este projeto apresentou o desenvolvimento e a modelagem de uma célula de manufatura automatizada composta por duas máquinas de processamento independentes, um robô industrial compartilhado e um buffer de saída com capacidade limitada. Ao longo do trabalho, foram detalhados o funcionamento físico e lógico de cada componente, bem como suas interações, restrições operacionais e possíveis falhas decorrentes da ausência de um controle adequado.
+
+A modelagem por meio de diagramas de estados permitiu representar de forma clara e estruturada o comportamento de cada elemento do sistema, evidenciando eventos controláveis, não controláveis e condições de sincronização. Essa abordagem possibilitou a identificação de situações críticas, como transbordamento do buffer, operações inválidas e cenários de deadlock, reforçando a importância da implementação de um sistema supervisor.
+
+Os resultados obtidos demonstram que a coordenação eficiente dos recursos compartilhados, em especial do robô industrial e do buffer de saída, é essencial para garantir a continuidade da produção, a segurança operacional e a confiabilidade do sistema. A limitação intencional da capacidade do buffer mostrou-se eficaz para evidenciar problemas de bloqueio e validar a necessidade de políticas de controle bem definidas.
+
+Por fim, o projeto estabelece uma base sólida para trabalhos futuros, como a implementação de um supervisor lógico formal, a aplicação de Redes de Petri ou autômatos supervisionados, e a validação do modelo em ambientes de simulação ou sistemas reais de automação industrial. Dessa forma, o estudo contribui para a compreensão prática e teórica de sistemas a eventos discretos aplicados à manufatura automatizada.
