@@ -182,7 +182,7 @@ O robô é modelado como o elemento central de coordenação do sistema. Ele ini
 Com o objetivo de complementar a descrição teórica e a modelagem apresentada ao longo do projeto, foi desenvolvido um **vídeo demonstrativo** que ilustra o funcionamento da célula de manufatura automatizada em operação.
 
 🔗 **Acesse o vídeo demonstrativo:**  
-[Inserir link do vídeo aqui]
+[https://youtu.be/i_YFYhjIBA8?si=qRuYvhwU87N6bokD]
 
 
 ## 8. Conclusão
