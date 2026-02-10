@@ -184,8 +184,11 @@ Com o objetivo de complementar a descrição teórica e a modelagem apresentada 
 🔗 **Acesse o vídeo demonstrativo:**  
 [https://youtu.be/i_YFYhjIBA8?si=qRuYvhwU87N6bokD]
 
+## 8. Projeto Completo
 
-## 8. Conclusão
+
+
+## 9. Conclusão
 
 Este projeto apresentou o desenvolvimento e a modelagem de uma célula de manufatura automatizada composta por duas máquinas de processamento independentes, um robô industrial compartilhado e um buffer de saída com capacidade limitada. Ao longo do trabalho, foram detalhados o funcionamento físico e lógico de cada componente, bem como suas interações, restrições operacionais e possíveis falhas decorrentes da ausência de um controle adequado.
 
