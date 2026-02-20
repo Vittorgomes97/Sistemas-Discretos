@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="windows-1252"?>
+<Module xmlns="http://waters.sourceforge.net/xsd/module" xmlns:B="http://waters.sourceforge.net/xsd/base" Name="celula_robô">
+<EventDeclList>
+<EventDecl Kind="CONTROLLABLE" Name="start_m1"/>
+<EventDecl Kind="UNCONTROLLABLE" Name="finish_m1"/>
+<EventDecl Kind="CONTROLLABLE" Name="get_m1"/>
+<EventDecl Kind="CONTROLLABLE" Name="start_m2"/>
+<EventDecl Kind="CONTROLLABLE" Name="get_m2"/>
+<EventDecl Kind="UNCONTROLLABLE" Name="finish_m2"/>
+<EventDecl Kind="CONTROLLABLE" Name="go_m1"/>
+<EventDecl Kind="CONTROLLABLE" Name="go_m2"/>
+<EventDecl Kind="CONTROLLABLE" Name="put_buffer"/>
+<EventDecl Kind="UNCONTROLLABLE" Name="remove_buffer"/>
+<EventDecl Kind="PROPOSITION" Name=":accepting"/>
+<EventDecl Kind="PROPOSITION" Name=":forbidden"/>
+</EventDeclList>
+<ComponentList>
+<SimpleComponent Kind="PLANT" Name="M1">
+<Graph>
+<NodeList>
+<SimpleNode Initial="true" Name="idle">
+<PointGeometry>
+<Point X="57" Y="58"/>
+</PointGeometry>
+<LabelGeometry Anchor="NW">
+<Point X="0" Y="10"/>
+</LabelGeometry>
+</SimpleNode>
+<SimpleNode Name="processing">
+<PointGeometry>
+<Point X="96" Y="208"/>
+</PointGeometry>
+<LabelGeometry Anchor="NW">
+<Point X="0" Y="10"/>
+</LabelGeometry>
+</SimpleNode>
+<SimpleNode Name="done">
+<PointGeometry>
+<Point X="240" Y="80"/>
+</PointGeometry>
+<LabelGeometry Anchor="NW">
+<Point X="0" Y="10"/>
+</LabelGeometry>
+</SimpleNode>
+</NodeList>
+<EdgeList>
+<Edge Source="idle" Target="processing">
+<LabelBlock>
+<SimpleIdentifier Name="start_m1"/>
+</LabelBlock>
+<SplineGeometry>
+<Point X="62" Y="136"/>
+</SplineGeometry>
+</Edge>
+<Edge Source="processing" Target="done">
+<LabelBlock>
+<SimpleIdentifier Name="finish_m1"/>
+</LabelBlock>
+<SplineGeometry>
+<Point X="180" Y="157"/>
+</SplineGeometry>
+</Edge>
+<Edge Source="done" Target="idle">
+<LabelBlock>
+<SimpleIdentifier Name="get_m1"/>
+</LabelBlock>
+<SplineGeometry>
+<Point X="150" Y="51"/>
+</SplineGeometry>
+</Edge>
+</EdgeList>
+</Graph>
+</SimpleComponent>
+<SimpleComponent Kind="PLANT" Name="M2">
+<Graph>
+<NodeList>
+<SimpleNode Initial="true" Name="idle">
+<PointGeometry>
+<Point X="60" Y="59"/>
+</PointGeometry>
+<LabelGeometry Anchor="NW">
+<Point X="0" Y="10"/>
+</LabelGeometry>
+</SimpleNode>
+<SimpleNode Name="processing">
+<PointGeometry>
+<Point X="96" Y="224"/>
+</PointGeometry>
+<LabelGeometry Anchor="NW">
+<Point X="0" Y="10"/>
+</LabelGeometry>
+</SimpleNode>
+<SimpleNode Name="done">
+<PointGeometry>
+<Point X="224" Y="80"/>
+</PointGeometry>
+<LabelGeometry Anchor="NW">
+<Point X="0" Y="10"/>
+</LabelGeometry>
+</SimpleNode>
+</NodeList>
+<EdgeList>
+<Edge Source="idle" Target="processing">
+<LabelBlock>
+<SimpleIdentifier Name="start_m2"/>
+</LabelBlock>
+<SplineGeometry>
+<Point X="62" Y="144"/>
+</SplineGeometry>
+</Edge>
+<Edge Source="processing" Target="done">
+<LabelBlock>
+<SimpleIdentifier Name="finish_m2"/>
+</LabelBlock>
+<SplineGeometry>
+<Point X="173" Y="164"/>
+</SplineGeometry>
+</Edge>
+<Edge Source="done" Target="idle">
+<LabelBlock>
+<SimpleIdentifier Name="get_m2"/>
+</LabelBlock>
+<SplineGeometry>
+<Point X="145" Y="55"/>
+</SplineGeometry>
+</Edge>
+</EdgeList>
+</Graph>
+</SimpleComponent>
+<SimpleComponent Kind="PLANT" Name="robo">
+<Graph>
+<NodeList>
+<SimpleNode Initial="true" Name="free">
+<PointGeometry>
+<Point X="64" Y="64"/>
+</PointGeometry>
+<LabelGeometry Anchor="NW">
+<Point X="0" Y="10"/>
+</LabelGeometry>
+</SimpleNode>
+<SimpleNode Name="At_M1">
+<PointGeometry>
+<Point X="56" Y="185"/>
+</PointGeometry>
+<LabelGeometry Anchor="NW">
+<Point X="0" Y="10"/>
+</LabelGeometry>
+</SimpleNode>
+<SimpleNode Name="At_M2">
+<PointGeometry>
+<Point X="191" Y="58"/>
+</PointGeometry>
+<LabelGeometry Anchor="NW">
+<Point X="0" Y="10"/>
+</LabelGeometry>
+</SimpleNode>
+<SimpleNode Name="Carrying">
+<PointGeometry>
+<Point X="208" Y="208"/>
+</PointGeometry>
+<LabelGeometry Anchor="NW">
+<Point X="0" Y="10"/>
+</LabelGeometry>
+</SimpleNode>
+</NodeList>
+<EdgeList>
+<Edge Source="free" Target="At_M1">
+<LabelBlock>
+<SimpleIdentifier Name="go_m1"/>
+</LabelBlock>
+<SplineGeometry>
+<Point X="47" Y="128"/>
+</SplineGeometry>
+</Edge>
+<Edge Source="free" Target="At_M2">
+<LabelBlock>
+<SimpleIdentifier Name="go_m2"/>
+</LabelBlock>
+<SplineGeometry>
+<Point X="131" Y="49"/>
+</SplineGeometry>
+</Edge>
+<Edge Source="At_M1" Target="Carrying">
+<LabelBlock>
+<SimpleIdentifier Name="get_m1"/>
+</LabelBlock>
+<SplineGeometry>
+<Point X="123" Y="210"/>
+</SplineGeometry>
+</Edge>
+<Edge Source="At_M2" Target="Carrying">
+<LabelBlock>
+<SimpleIdentifier Name="get_m2"/>
+</LabelBlock>
+<SplineGeometry>
+<Point X="213" Y="125"/>
+</SplineGeometry>
+</Edge>
+<Edge Source="Carrying" Target="free">
+<LabelBlock>
+<SimpleIdentifier Name="put_buffer"/>
+</LabelBlock>
+</Edge>
+</EdgeList>
+</Graph>
+</SimpleComponent>
+<SimpleComponent Kind="PLANT" Name="buffer">
+<Graph>
+<NodeList>
+<SimpleNode Initial="true" Name="B0">
+<PointGeometry>
+<Point X="48" Y="48"/>
+</PointGeometry>
+<LabelGeometry Anchor="NW">
+<Point X="0" Y="10"/>
+</LabelGeometry>
+</SimpleNode>
+<SimpleNode Name="B1">
+<PointGeometry>
+<Point X="139" Y="130"/>
+</PointGeometry>
+<LabelGeometry Anchor="NW">
+<Point X="0" Y="10"/>
+</LabelGeometry>
+</SimpleNode>
+<SimpleNode Name="B3">
+<PointGeometry>
+<Point X="240" Y="224"/>
+</PointGeometry>
+<LabelGeometry Anchor="NW">
+<Point X="0" Y="10"/>
+</LabelGeometry>
+</SimpleNode>
+</NodeList>
+<EdgeList>
+<Edge Source="B0" Target="B1">
+<LabelBlock>
+<SimpleIdentifier Name="put_buffer"/>
+</LabelBlock>
+<SplineGeometry>
+<Point X="130" Y="55"/>
+</SplineGeometry>
+</Edge>
+<Edge Source="B1" Target="B3">
+<LabelBlock>
+<SimpleIdentifier Name="put_buffer"/>
+</LabelBlock>
+<SplineGeometry>
+<Point X="271" Y="140"/>
+</SplineGeometry>
+</Edge>
+<Edge Source="B3" Target="B1">
+<LabelBlock>
+<SimpleIdentifier Name="remove_buffer"/>
+</LabelBlock>
+<SplineGeometry>
+<Point X="129" Y="232"/>
+</SplineGeometry>
+</Edge>
+<Edge Source="B1" Target="B0">
+<LabelBlock>
+<SimpleIdentifier Name="remove_buffer"/>
+</LabelBlock>
+<SplineGeometry>
+<Point X="43" Y="122"/>
+</SplineGeometry>
+</Edge>
+</EdgeList>
+</Graph>
+</SimpleComponent>
+</ComponentList>
+</Module>
